@@ -1,0 +1,110 @@
+{
+  "site": {
+    "name": "PetikLaut",
+    "tagline": "Tradisi & Budaya Bahari Nusantara"
+  },
+  "header": {
+    "logoText": "PetikLaut",
+    "menu": [
+      { "name": "Home", "link": "#home" },
+      { "name": "Info Teman Kamu", "link": "#info-teman" },
+      { "name": "Info Petik Laut", "link": "#info-petik" }
+    ]
+  },
+  "hero": {
+    "badge": "Tradisi & Budaya Bahari",
+    "title": "Petik <span class='highlight'>Laut</span>",
+    "subtitle": "Warisan Leluhur Nusantara",
+    "description": "Tradisi luhur sebagai wujud syukur kepada Sang Pencipta atas melimpahnya hasil laut, merawat alam, dan mempererat kebersamaan masyarakat pesisir Timur Indonesia. Rasakan semilir angin dan keindahan budaya kita.",
+    "ctaPrimary": { "text": "Jelajahi Sekarang", "link": "#info-petik" },
+    "ctaSecondary": { "text": "Tonton Video", "link": "#video-section" },
+    "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+    "floatingBadge": {
+      "label": "Warisan",
+      "value": "Budaya Nusantara"
+    },
+    "stats": [
+      { "value": "300+", "label": "Tahun Tradisi" },
+      { "value": "12K+", "label": "Peserta" },
+      { "value": "7", "label": "Desa Pesisir" }
+    ]
+  },
+  "video": {
+    "sectionTitle": "Suasana Harmoni Petik Laut",
+    "sectionDesc": "Saksikan lebih dekat kemeriahan dan nilai-nilai luhur yang dijunjung tinggi oleh masyarakat dalam menjaga kelestarian laut.",
+    "youtubeId": "LXb3EKWsInQ"
+  },
+  "carousel": {
+    "sectionTitle": "Galeri Kegiatan & Acara",
+    "sectionDesc": "Berbagai rangkaian acara menarik di sepanjang festival Petik Laut.",
+    "items": [
+      {
+        "id": 1,
+        "image": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=600&fit=crop",
+        "title": "Festival Perahu Hias",
+        "desc": "Arak-arakan perahu nelayan dihias warna-warni merayakan syukur hasil laut.",
+        "platform": "instagram",
+        "socialUrl": "https://instagram.com",
+        "socialLabel": "Lihat di Instagram"
+      },
+      {
+        "id": 2,
+        "image": "https://images.unsplash.com/photo-1582215887293-1dd7b34b12aa?q=80&w=600&fit=crop",
+        "title": "Tradisi Larung Sesaji",
+        "desc": "Momen sakral pelemparan sesaji ke laut sebagai bentuk persembahan dan doa.",
+        "platform": "facebook",
+        "socialUrl": "https://facebook.com",
+        "socialLabel": "Lihat di Facebook"
+      },
+      {
+        "id": 3,
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=600&fit=crop",
+        "title": "Tari Kolosal Nelayan",
+        "desc": "Penampilan kolosal ratusan penari yang menggambarkan kehidupan nelayan pesisir.",
+        "platform": "instagram",
+        "socialUrl": "https://instagram.com",
+        "socialLabel": "Lihat di Instagram"
+      },
+      {
+        "id": 4,
+        "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=600&fit=crop",
+        "title": "Pasar Malam Pesisir",
+        "desc": "Meriahnya pasar malam dengan aneka kuliner dan kerajinan tangan khas pesisir.",
+        "platform": "facebook",
+        "socialUrl": "https://facebook.com",
+        "socialLabel": "Lihat di Facebook"
+      },
+      {
+        "id": 5,
+        "image": "https://images.unsplash.com/photo-1504197832061-98180058e4d3?q=80&w=600&fit=crop",
+        "title": "Budaya Bahari",
+        "desc": "Kekayaan budaya bahari yang terus dijaga dan diturunkan ke generasi berikutnya.",
+        "platform": "instagram",
+        "socialUrl": "https://instagram.com",
+        "socialLabel": "Lihat di Instagram"
+      }
+    ]
+  },
+  "footer": {
+    "logoText": "PetikLaut",
+    "info": "Petik Laut adalah tradisi turun-temurun warga pesisir sebagai bentuk rasa syukur. Bersama kita lestarikan harmoni alam dan budaya bahari nusantara untuk generasi mendatang.",
+    "copyright": "PetikLaut. Dibuat dengan ❤️ untuk budaya nusantara.",
+    "socials": [
+      {
+        "platform": "Instagram",
+        "link": "#",
+        "icon": "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+      },
+      {
+        "platform": "Facebook",
+        "link": "#",
+        "icon": "M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+      },
+      {
+        "platform": "YouTube",
+        "link": "#",
+        "icon": "M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"
+      }
+    ]
+  }
+}

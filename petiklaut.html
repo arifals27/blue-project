@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetikLaut — Tradisi Laut yang Hidup</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    :root {
+      --ocean-deep:   #0a2540;
+      --ocean-mid:    #0e4f82;
+      --ocean-bright: #1a8fe3;
+      --ocean-light:  #5bc4f5;
+      --ocean-foam:   #d0f0fd;
+      --sand:         #f0f8ff;
+      --accent:       #f59e0b;
+      --white:        #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--sand);
+      color: var(--ocean-deep);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ──────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 2px 32px rgba(10,37,64,0.10);
+    }
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 2px;
+      background: var(--ocean-bright);
+      transform: scaleX(0); transform-origin: center;
+      transition: transform 0.3s ease;
+      border-radius: 99px;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ─────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a2540 0%, #0e4f82 45%, #1a8fe3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Wave SVG */
+    .hero-wave {
+      position: absolute; bottom: -2px; left: 0; width: 100%;
+      pointer-events: none;
+    }
+
+    /* Animated water ripple blobs */
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.25;
+      animation: blobPulse 8s ease-in-out infinite;
+    }
+    .blob-1 { width: 520px; height: 520px; background: #5bc4f5; top: -100px; right: -80px; animation-delay: 0s; }
+    .blob-2 { width: 340px; height: 340px; background: #0a2540; bottom: 60px; left: -60px; animation-delay: -3s; }
+    .blob-3 { width: 260px; height: 260px; background: #1a8fe3; top: 40%; right: 20%; animation-delay: -5s; }
+
+    @keyframes blobPulse {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50%       { transform: scale(1.12) translateY(-20px); }
+    }
+
+    .hero-img-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(10,37,64,0.5);
+    }
+    .hero-img-container::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(26,143,227,0.25) 0%, transparent 60%);
+      border-radius: 24px;
+    }
+    .hero-img-container img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 8s ease;
+    }
+    .hero-img-container:hover img { transform: scale(1.04); }
+
+    /* Floating badge */
+    .float-badge {
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── SECTION TITLES ───────────────────── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+    .underline-wave {
+      display: inline-block;
+      position: relative;
+    }
+    .underline-wave::after {
+      content: '';
+      position: absolute; bottom: -6px; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--ocean-bright), var(--ocean-light));
+      border-radius: 99px;
+    }
+
+    /* ── VIDEO ────────────────────────────── */
+    #video-section {
+      background: linear-gradient(180deg, #f0f8ff 0%, #dceefb 100%);
+    }
+    .video-wrapper {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 20px 70px rgba(10,37,64,0.18);
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      border: none; border-radius: 20px;
+    }
+
+    /* ── CAROUSEL ─────────────────────────── */
+    #carousel-section {
+      background: linear-gradient(180deg, #dceefb 0%, #0a2540 100%);
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 60px 0 !important;
+    }
+    .swiper-slide {
+      width: 260px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+      opacity: 0.55;
+      transform: scale(0.82);
+    }
+    .swiper-slide-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      opacity: 0.75;
+      transform: scale(0.9);
+    }
+
+    .poster-card {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(10,37,64,0.25);
+      transition: box-shadow 0.4s ease;
+      background: #0e4f82;
+    }
+    .swiper-slide-active .poster-card {
+      box-shadow: 0 24px 80px rgba(10,37,64,0.5);
+    }
+    .poster-card img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .poster-card:hover img { transform: scale(1.06); }
+
+    .poster-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,37,64,0.90) 0%, rgba(10,37,64,0.10) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .poster-card:hover .poster-overlay,
+    .swiper-slide-active .poster-overlay { opacity: 1; }
+
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 99px;
+      font-size: 0.78rem; font-weight: 600;
+      transition: transform 0.2s, opacity 0.2s;
+      text-decoration: none; color: white;
+      margin: 3px 2px;
+    }
+    .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+    .social-btn.ig  { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+    .social-btn.fb  { background: #1877f2; }
+
+    /* Swiper nav buttons */
+    .swiper-button-prev, .swiper-button-next {
+      color: white !important;
+      background: rgba(26,143,227,0.6);
+      border-radius: 50%;
+      width: 44px !important; height: 44px !important;
+      backdrop-filter: blur(8px);
+    }
+    .swiper-button-prev::after, .swiper-button-next::after {
+      font-size: 14px !important; font-weight: 700;
+    }
+    .swiper-pagination-bullet { background: white !important; opacity: 0.5; }
+    .swiper-pagination-bullet-active { opacity: 1 !important; }
+
+    /* ── FOOTER ───────────────────────────── */
+    footer {
+      background: var(--ocean-deep);
+      color: rgba(255,255,255,0.75);
+    }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      transition: background 0.25s, transform 0.25s;
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      background: var(--ocean-bright);
+      transform: translateY(-3px);
+    }
+
+    /* ── ANIMATIONS ──────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* Watermark number */
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 7rem;
+      font-weight: 900;
+      opacity: 0.06;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Shimmer button */
+    .btn-primary {
+      position: relative; overflow: hidden;
+      background: linear-gradient(90deg, var(--ocean-bright), var(--ocean-light));
+      color: white; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; letter-spacing: 0.03em;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute; top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 2.8s ease infinite;
+    }
+    @keyframes shimmer {
+      0%   { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    /* Mobile menu */
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    #mobile-menu.open { max-height: 300px; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      animation: bounce 2s ease infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(10px); }
+    }
+
+    /* Glassmorphism card */
+    .glass {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav id="navbar" class="w-full py-4 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 group">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#1a8fe3,#5bc4f5)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12 Q6 8 9 12 Q12 16 15 12 Q18 8 21 12"/>
+          <path d="M3 17 Q6 13 9 17 Q12 21 15 17 Q18 13 21 17"/>
+        </svg>
+      </div>
+      <span class="font-display font-bold text-xl text-white" id="logo-text">PetikLaut</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex items-center gap-8">
+      <li><a href="#hero"     class="nav-link text-white hover:text-[#5bc4f5]">Home</a></li>
+      <li><a href="#video"    class="nav-link text-white hover:text-[#5bc4f5]">Info Teman Kamu</a></li>
+      <li><a href="#carousel" class="nav-link text-white hover:text-[#5bc4f5]">Info Petik Laut</a></li>
+      <li>
+        <a href="#" class="btn-primary text-sm px-5 py-2 rounded-full inline-block" style="border-radius:99px">
+          Gabung Sekarang
+        </a>
+      </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden text-white p-2 rounded-lg" style="background:rgba(255,255,255,0.1)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="3" y1="6"  x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden px-6 pb-4">
+    <ul class="flex flex-col gap-3 pt-4 border-t border-white/20 mt-2">
+      <li><a href="#hero"     class="block text-white font-medium py-2">Home</a></li>
+      <li><a href="#video"    class="block text-white font-medium py-2">Info Teman Kamu</a></li>
+      <li><a href="#carousel" class="block text-white font-medium py-2">Info Petik Laut</a></li>
+      <li><a href="#"         class="btn-primary text-sm px-5 py-2 rounded-full inline-block mt-1" style="border-radius:99px">Gabung Sekarang</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════ -->
+<section id="hero" class="relative flex items-center">
+
+  <!-- Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <!-- Grid pattern overlay -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+
+  <div class="max-w-6xl mx-auto px-6 md:px-12 pt-36 pb-32 w-full relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <!-- Badge -->
+        <div class="float-badge inline-flex items-center gap-2 mb-6 glass px-4 py-2 text-sm text-[#5bc4f5] font-semibold">
+          <span class="w-2 h-2 rounded-full bg-[#5bc4f5] animate-pulse inline-block"></span>
+          Tradisi Nelayan Nusantara
+        </div>
+
+        <h1 class="section-title text-white text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+          Petik<br/>
+          <span style="color:#5bc4f5">Laut</span>
+        </h1>
+
+        <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-8 max-w-md">
+          Syukuran nelayan yang mengalir dari generasi ke generasi — ritual suci menyambut musim tangkap, penuh doa, warna, dan kebersamaan di lautan biru.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#video" class="btn-primary px-7 py-3 rounded-full text-base font-semibold inline-flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Tonton Video
+          </a>
+          <a href="#carousel" class="inline-flex items-center gap-2 px-7 py-3 rounded-full text-base font-semibold text-white border border-white/30 hover:bg-white/10 transition-all">
+            Lihat Poster
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex gap-8 mt-12">
+          <div>
+            <p class="text-white text-2xl font-display font-bold">300+</p>
+            <p class="text-white/55 text-sm">Tahun Tradisi</p>
+          </div>
+          <div class="w-px bg-white/20"></div>
+          <div>
+            <p class="text-white text-2xl font-display font-bold">12</p>
+            <p class="text-white/55 text-sm">Kota Pesisir</p>
+          </div>
+          <div class="w-px bg-white/20"></div>
+          <div>
+            <p class="text-white text-2xl font-display font-bold">∞</p>
+            <p class="text-white/55 text-sm">Kebersamaan</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="hero-img-container" style="height:480px;">
+        <!-- Using a beautiful ocean placeholder from picsum -->
+        <img
+          src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80&auto=format&fit=crop"
+          alt="Lautan biru yang indah"
+          loading="lazy"
+        />
+        <!-- Floating info card -->
+        <div class="absolute bottom-5 left-5 z-10 glass px-4 py-3 float-badge" style="animation-delay:1s">
+          <p class="text-white text-xs font-semibold">📍 Pantai Nusantara</p>
+          <p class="text-white/70 text-xs mt-0.5">Ritual sakral setiap tahun</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="flex flex-col items-center mt-16 gap-2 scroll-indicator">
+      <p class="text-white/40 text-xs font-medium tracking-widest uppercase">Gulir ke bawah</p>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Wave -->
+  <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#f0f8ff"/>
+  </svg>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     VIDEO SECTION
+════════════════════════════════════════════ -->
+<section id="video" id="video-section" class="py-24 px-6 md:px-12" style="background:linear-gradient(180deg,#f0f8ff 0%,#dceefb 100%)">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-[#1a8fe3] text-sm font-semibold tracking-widest uppercase mb-3">Info Teman Kamu</span>
+      <h2 class="section-title text-4xl md:text-5xl text-[#0a2540] mb-4">
+        Kenali <span class="underline-wave">Tradisi</span><br/>Petik Laut
+      </h2>
+      <p class="text-[#0a2540]/60 text-lg max-w-xl mx-auto">
+        Saksikan betapa sakral dan indahnya ritual Petik Laut — warisan leluhur yang terus hidup di sepanjang pantai Nusantara.
+      </p>
+    </div>
+
+    <div class="video-wrapper reveal reveal-delay-1">
+      <iframe
+        src="https://www.youtube.com/embed/4U-gSW7Hj8g?si=petiklaut&rel=0&modestbranding=1"
+        title="Petik Laut — Tradisi Nelayan Nusantara"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Feature pills below video -->
+    <div class="flex flex-wrap justify-center gap-3 mt-10 reveal reveal-delay-2">
+      <span class="px-4 py-2 rounded-full text-sm font-medium" style="background:#d0f0fd;color:#0e4f82">🎣 Tradisi Nelayan</span>
+      <span class="px-4 py-2 rounded-full text-sm font-medium" style="background:#d0f0fd;color:#0e4f82">🙏 Ritual Syukuran</span>
+      <span class="px-4 py-2 rounded-full text-sm font-medium" style="background:#d0f0fd;color:#0e4f82">⛵ Festival Laut</span>
+      <span class="px-4 py-2 rounded-full text-sm font-medium" style="background:#d0f0fd;color:#0e4f82">🌊 Budaya Pesisir</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CAROUSEL POSTER SECTION
+════════════════════════════════════════════ -->
+<section id="carousel" style="background:linear-gradient(180deg,#dceefb 0%,#0a2540 100%);padding:80px 0 100px">
+
+  <div class="text-center mb-4 px-6 reveal">
+    <span class="inline-block text-[#5bc4f5] text-sm font-semibold tracking-widest uppercase mb-3">Info Petik Laut</span>
+    <h2 class="section-title text-4xl md:text-5xl text-[#0a2540] mb-4">
+      Poster <span class="underline-wave" style="--ocean-bright:#1a8fe3">Kegiatan</span>
+    </h2>
+    <p class="text-[#0a2540]/60 text-lg max-w-lg mx-auto">
+      Klik poster untuk info lengkap di media sosial kami. Geser untuk melihat semua.
+    </p>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper mySwiper mt-8">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1599948697050-3e92a5abb489?w=400&q=80&auto=format&fit=crop" alt="Poster 1 – Opening Festival" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Opening Festival</p>
+            <p class="text-white/70 text-xs mb-3">Upacara pembukaan Petik Laut 2025</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="none"/><circle cx="12" cy="12" r="3" fill="#833ab4"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80&auto=format&fit=crop" alt="Poster 2 – Larung Sesaji" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Larung Sesaji</p>
+            <p class="text-white/70 text-xs mb-3">Prosesi sakral di tengah lautan</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3" fill="#fd1d1d"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 (will be active center) -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80&auto=format&fit=crop" alt="Poster 3 – Parade Perahu" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Parade Perahu Hias</p>
+            <p class="text-white/70 text-xs mb-3">Arak-arakan perahu nelayan berhias</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3" fill="#fcb045"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80&auto=format&fit=crop" alt="Poster 4 – Pertunjukan Seni" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Pertunjukan Seni</p>
+            <p class="text-white/70 text-xs mb-3">Tari dan musik tradisional pesisir</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3" fill="#833ab4"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1440570570986-1f9e576e8f4f?w=400&q=80&auto=format&fit=crop" alt="Poster 5 – Malam Penutupan" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Malam Penutupan</p>
+            <p class="text-white/70 text-xs mb-3">Pesta rakyat dan kembang api</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3" fill="#fd1d1d"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="swiper-slide">
+        <div class="poster-card">
+          <img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=400&q=80&auto=format&fit=crop" alt="Poster 6 – Pameran Foto" />
+          <div class="poster-overlay">
+            <p class="text-white font-display font-bold text-base mb-1">Pameran Foto Laut</p>
+            <p class="text-white/70 text-xs mb-3">Dokumentasi visual keindahan ritual</p>
+            <div>
+              <a href="https://instagram.com" target="_blank" class="social-btn ig">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3" fill="#fcb045"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" class="social-btn fb">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /swiper-wrapper -->
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer style="background:#0a2540" class="pt-16 pb-8 px-6 md:px-12">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#1a8fe3,#5bc4f5)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+              <path d="M3 12 Q6 8 9 12 Q12 16 15 12 Q18 8 21 12"/>
+              <path d="M3 17 Q6 13 9 17 Q12 21 15 17 Q18 13 21 17"/>
+            </svg>
+          </div>
+          <span class="font-display font-bold text-xl text-white">PetikLaut</span>
+        </div>
+        <p class="text-white/55 text-sm leading-relaxed max-w-xs">
+          Menjaga dan merayakan tradisi syukuran nelayan Nusantara yang telah mengalir selama berabad-abad di pesisir Indonesia.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Navigasi</h4>
+        <ul class="space-y-3">
+          <li><a href="#hero"     class="text-white/55 text-sm hover:text-white transition-colors">Home</a></li>
+          <li><a href="#video"    class="text-white/55 text-sm hover:text-white transition-colors">Info Teman Kamu</a></li>
+          <li><a href="#carousel" class="text-white/55 text-sm hover:text-white transition-colors">Info Petik Laut</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Ikuti Kami</h4>
+        <p class="text-white/55 text-sm mb-5">
+          Update terbaru seputar Petik Laut ada di sini!
+        </p>
+        <div class="footer-social flex gap-3">
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" title="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://youtube.com" target="_blank" title="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+            </svg>
+          </a>
+          <!-- TikTok placeholder (X icon) -->
+          <a href="#" target="_blank" title="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05A6.34 6.34 0 003.15 15.3a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.6a8.23 8.23 0 004.82 1.55V6.69a4.85 4.85 0 01-1.05-.0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
+      <p class="text-white/35 text-xs">© 2025 PetikLaut. Hak Cipta Dilindungi.</p>
+      <p class="text-white/35 text-xs">Dibuat dengan 🌊 untuk nelayan Nusantara</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script>
+  // ── NAVBAR scroll behavior ─────────────────
+  const navbar   = document.getElementById('navbar');
+  const logoText = document.getElementById('logo-text');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+      logoText.style.color = '#0a2540';
+      navbar.querySelectorAll('.nav-link').forEach(l => {
+        l.style.color = '#0a2540';
+      });
+    } else {
+      navbar.classList.remove('scrolled');
+      logoText.style.color = 'white';
+      navbar.querySelectorAll('.nav-link').forEach(l => {
+        l.style.color = 'white';
+      });
+    }
+  });
+
+  // ── HAMBURGER ──────────────────────────────
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  });
+
+  // ── SWIPER ─────────────────────────────────
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView:  'auto',
+    centeredSlides: true,
+    spaceBetween:   24,
+    loop:           true,
+    speed:          600,
+    autoplay: {
+      delay:            3500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el:        '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    effect: 'slide',
+    grabCursor: true,
+  });
+
+  // ── SCROLL REVEAL ──────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ── HERO image parallax (subtle) ──────────
+  window.addEventListener('scroll', () => {
+    const hero = document.getElementById('hero');
+    const heroImg = hero.querySelector('img');
+    if (heroImg) {
+      const scrolled = window.scrollY;
+      heroImg.style.transform = `scale(1.04) translateY(${scrolled * 0.08}px)`;
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
