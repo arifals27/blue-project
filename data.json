@@ -5,10 +5,45 @@
   },
   "header": {
     "logoText": "PetikLaut",
+    "partnerLogos": [
+      {
+        "name": "Kemenkebud",
+        "src": "assets/images/logo/kemenkebud.png"
+      },
+      {
+        "name": "Danaindo",
+        "src": "assets/images/logo/danaindo.png"
+      },
+      {
+        "name": "LPDP",
+        "src": "assets/images/logo/lpdp.png"
+      },
+      {
+        "name": "GeoTalk",
+        "src": "assets/images/logo/geotalk.png"
+      }
+    ],
+    "mainLogo": {
+      "name": "PetikLaut",
+      "src": "assets/images/logo/petiklaut.png"
+    },
     "menu": [
-      { "name": "Home", "link": "#home" },
-      { "name": "Info Teman Kamu", "link": "#info-teman" },
-      { "name": "Info Petik Laut", "link": "#info-petik" }
+      {
+        "name": "Home",
+        "link": "index.html#home"
+      },
+      {
+        "name": "Documentation",
+        "link": "index.html#info-teman"
+      },
+      {
+        "name": "Galery",
+        "link": "index.html#info-petik"
+      },
+      {
+        "name": "About",
+        "link": "about.html"
+      }
     ]
   },
   "hero": {
@@ -16,17 +51,32 @@
     "title": "Petik <span class='highlight'>Laut</span>",
     "subtitle": "Warisan Leluhur Nusantara",
     "description": "Tradisi luhur sebagai wujud syukur kepada Sang Pencipta atas melimpahnya hasil laut, merawat alam, dan mempererat kebersamaan masyarakat pesisir Timur Indonesia. Rasakan semilir angin dan keindahan budaya kita.",
-    "ctaPrimary": { "text": "Jelajahi Sekarang", "link": "#info-petik" },
-    "ctaSecondary": { "text": "Tonton Video", "link": "#video-section" },
+    "ctaPrimary": {
+      "text": "Jelajahi Sekarang",
+      "link": "#info-petik"
+    },
+    "ctaSecondary": {
+      "text": "Tonton Video",
+      "link": "#video-section"
+    },
     "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
     "floatingBadge": {
       "label": "Warisan",
       "value": "Budaya Nusantara"
     },
     "stats": [
-      { "value": "300+", "label": "Tahun Tradisi" },
-      { "value": "12K+", "label": "Peserta" },
-      { "value": "7", "label": "Desa Pesisir" }
+      {
+        "value": "300+",
+        "label": "Tahun Tradisi"
+      },
+      {
+        "value": "12K+",
+        "label": "Peserta"
+      },
+      {
+        "value": "7",
+        "label": "Desa Pesisir"
+      }
     ]
   },
   "video": {
@@ -36,52 +86,113 @@
   },
   "carousel": {
     "sectionTitle": "Galeri Kegiatan & Acara",
-    "sectionDesc": "Berbagai rangkaian acara menarik di sepanjang festival Petik Laut.",
+    "sectionDesc": "Dokumentasi kegiatan dan acara dari @petiklaut.id — diurutkan dari yang terlama.",
     "items": [
       {
         "id": 1,
-        "image": "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=600&fit=crop",
-        "title": "Festival Perahu Hias",
-        "desc": "Arak-arakan perahu nelayan dihias warna-warni merayakan syukur hasil laut.",
+        "image": "/assets/images/galery/1.jpg",
+        "title": "Filosofi Logo",
+        "desc": "Logo ini adalah janji kami untuk terus menghargai laut. Karena saat kita menjaga laut, laut akan memberikan kemakmuran yang tak putus-putus. 💎",
         "platform": "instagram",
-        "socialUrl": "https://instagram.com",
+        "socialUrl": "https://www.instagram.com/p/DWfXHObksQo/",
         "socialLabel": "Lihat di Instagram"
       },
       {
         "id": 2,
-        "image": "https://images.unsplash.com/photo-1582215887293-1dd7b34b12aa?q=80&w=600&fit=crop",
-        "title": "Tradisi Larung Sesaji",
-        "desc": "Momen sakral pelemparan sesaji ke laut sebagai bentuk persembahan dan doa.",
-        "platform": "facebook",
-        "socialUrl": "https://facebook.com",
-        "socialLabel": "Lihat di Facebook"
+        "image": "/assets/images/galery/2.jpg",
+        "title": "Tradisi Petik Laut",
+        "desc": "Tradisi Petik Laut adalah wujud rasa syukur dan doa keselamatan bagi para nelayan dan masyarakat pesisir.",
+        "platform": "instagram",
+        "socialUrl": "https://www.instagram.com/p/DW0cxKekv-t/",
+        "socialLabel": "Lihat di Instagram"
       },
       {
         "id": 3,
-        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=600&fit=crop",
-        "title": "Tari Kolosal Nelayan",
-        "desc": "Penampilan kolosal ratusan penari yang menggambarkan kehidupan nelayan pesisir.",
+        "image": "/assets/images/galery/3.jpg",
+        "title": "Makna Prosesi Petik Laut",
+        "desc": "Prosesi cara masyarakat pesisir memanifestasikan keseimbangan ekologis, merawat solidaritas komunal, dan menegosiasikan rasa aman dengan ganasnya ombak Samudra Hindia.",
         "platform": "instagram",
-        "socialUrl": "https://instagram.com",
+        "socialUrl": "https://www.instagram.com/p/DXLbpqbEjtT/",
         "socialLabel": "Lihat di Instagram"
       },
       {
         "id": 4,
-        "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=600&fit=crop",
-        "title": "Pasar Malam Pesisir",
-        "desc": "Meriahnya pasar malam dengan aneka kuliner dan kerajinan tangan khas pesisir.",
-        "platform": "facebook",
-        "socialUrl": "https://facebook.com",
-        "socialLabel": "Lihat di Facebook"
+        "image": "/assets/images/galery/4.jpg",
+        "title": "Festival Petik Laut 2025",
+        "desc": "Kemeriahan Festival Petik Laut yang dihadiri ribuan warga — perpaduan tradisi, seni, dan kebersamaan masyarakat pesisir.",
+        "platform": "instagram",
+        "socialUrl": "https://www.instagram.com/p/DYC6M9fktG6/",
+        "socialLabel": "Lihat di Instagram"
+      }
+    ]
+  },
+  "about": {
+    "heroTitle": "Tentang Kami",
+    "heroDesc": "Tim peneliti dan pengembang di balik pelestarian budaya bahari Nusantara melalui platform PetikLaut.",
+    "mission": "Melestarikan dan mendokumentasikan tradisi Petik Laut sebagai warisan budaya tak benda Indonesia, melalui riset ilmiah, publikasi digital, dan kolaborasi lintas komunitas.",
+    "vision": "Menjadi platform referensi utama budaya bahari Nusantara yang menghubungkan tradisi leluhur dengan generasi masa kini melalui teknologi dan sains.",
+    "values": [
+      {
+        "icon": "🌊",
+        "title": "Kelestarian",
+        "desc": "Menjaga dan melestarikan tradisi bahari untuk generasi mendatang."
       },
       {
-        "id": 5,
-        "image": "https://images.unsplash.com/photo-1504197832061-98180058e4d3?q=80&w=600&fit=crop",
-        "title": "Budaya Bahari",
-        "desc": "Kekayaan budaya bahari yang terus dijaga dan diturunkan ke generasi berikutnya.",
-        "platform": "instagram",
-        "socialUrl": "https://instagram.com",
-        "socialLabel": "Lihat di Instagram"
+        "icon": "🔬",
+        "title": "Riset Ilmiah",
+        "desc": "Mendekati budaya dengan pendekatan saintifik dan akademis."
+      },
+      {
+        "icon": "🤝",
+        "title": "Kolaborasi",
+        "desc": "Bekerja bersama masyarakat, akademisi, dan pemerintah."
+      },
+      {
+        "icon": "📚",
+        "title": "Edukasi",
+        "desc": "Menyebarluaskan pengetahuan budaya bahari ke masyarakat luas."
+      }
+    ],
+    "team": [
+      {
+        "name": "Dr. Ahmad Fauzi, M.Si.",
+        "role": "Peneliti Utama",
+        "bio": "Pakar antropologi maritim dengan pengalaman 15+ tahun meneliti tradisi masyarakat pesisir Indonesia Timur. Lulusan Universitas Indonesia dan Leiden University.",
+        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&fit=crop&crop=face",
+        "socials": {
+          "email": "ahmad.fauzi@petiklaut.id",
+          "linkedin": "#"
+        }
+      },
+      {
+        "name": "Siti Nurhaliza, M.Hum.",
+        "role": "Peneliti Budaya",
+        "bio": "Spesialis kajian budaya dan sastra lisan masyarakat pesisir. Aktif dalam dokumentasi tradisi Petik Laut sejak 2018 di berbagai desa pesisir Jawa Timur.",
+        "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&fit=crop&crop=face",
+        "socials": {
+          "email": "siti.nurhaliza@petiklaut.id",
+          "linkedin": "#"
+        }
+      },
+      {
+        "name": "Rizky Aditya Pratama, S.Kom.",
+        "role": "Lead Developer",
+        "bio": "Full-stack developer dan GIS enthusiast. Mengembangkan platform digital PetikLaut untuk arsip dan publikasi data budaya bahari berbasis web.",
+        "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&fit=crop&crop=face",
+        "socials": {
+          "email": "rizky.aditya@petiklaut.id",
+          "linkedin": "#"
+        }
+      },
+      {
+        "name": "Maya Putri Anggraini, S.Sos.",
+        "role": "Content & Media",
+        "bio": "Spesialis komunikasi digital dan dokumentasi visual. Bertanggung jawab atas konten media sosial dan dokumentasi kegiatan lapangan tim PetikLaut.",
+        "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&fit=crop&crop=face",
+        "socials": {
+          "email": "maya.putri@petiklaut.id",
+          "linkedin": "#"
+        }
       }
     ]
   },
@@ -92,7 +203,7 @@
     "socials": [
       {
         "platform": "Instagram",
-        "link": "#",
+        "link": "https://www.instagram.com/petiklaut.id",
         "icon": "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
       },
       {

@@ -22,25 +22,60 @@
   }
 
   /* ─── NAVBAR ─────────────────────────────────────────────── */
-  function initNavbar(menuItems, logoText) {
-    const navbar  = document.getElementById('navbar');
-    const logoEl  = document.getElementById('logoText');
+  function initNavbar(headerData) {
+    const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const desktopNav = document.getElementById('desktopNav');
 
-    // Set logo text
-    if (logoEl) logoEl.textContent = logoText;
+    // Render partner logos
+    const partnerContainer = document.getElementById('partnerLogos');
+    if (partnerContainer && Array.isArray(headerData.partnerLogos)) {
+      headerData.partnerLogos.forEach((logo) => {
+        const img = document.createElement('img');
+        img.src = logo.src;
+        img.alt = logo.name;
+        img.className = 'partner-logo-img';
+        img.loading = 'lazy';
+        partnerContainer.appendChild(img);
+      });
+    }
+
+    // Render main logo
+    const mainLogoImg = document.getElementById('mainLogoImg');
+    if (mainLogoImg && headerData.mainLogo) {
+      mainLogoImg.src = headerData.mainLogo.src;
+      mainLogoImg.alt = headerData.mainLogo.name;
+    }
+
+    // Footer logo
     const footerLogo = document.getElementById('footerLogoText');
-    if (footerLogo) footerLogo.textContent = logoText;
+    if (footerLogo) footerLogo.textContent = headerData.logoText || 'PetikLaut';
+
+    // Footer logo image
+    const footerBrand = document.querySelector('.footer-brand');
+    if (footerBrand && headerData.mainLogo) {
+      const footerLogoIcon = document.getElementById('footerLogoIcon');
+      if (footerLogoIcon) footerLogoIcon.style.display = 'none';
+      const footerImg = document.createElement('img');
+      footerImg.src = headerData.mainLogo.src;
+      footerImg.alt = headerData.mainLogo.name;
+      footerImg.className = 'footer-logo-img';
+      footerBrand.insertBefore(footerImg, footerBrand.firstChild);
+    }
 
     // Build desktop nav links
+    const menuItems = headerData.menu || [];
     menuItems.forEach((item) => {
       const li = document.createElement('li');
-      const a  = document.createElement('a');
-      a.href        = item.link;
+      const a = document.createElement('a');
+      a.href = item.link;
       a.textContent = item.name;
-      a.className   = 'nav-link';
+      a.className = 'nav-link';
+      // External page links (not anchors)
+      if (!item.link.startsWith('#')) {
+        // no special handling needed, just navigate
+      }
       li.appendChild(a);
       desktopNav.appendChild(li);
     });
@@ -48,10 +83,12 @@
     // Build mobile nav links
     menuItems.forEach((item) => {
       const a = document.createElement('a');
-      a.href        = item.link;
+      a.href = item.link;
       a.textContent = item.name;
-      a.className   = 'mobile-nav-link';
-      a.addEventListener('click', closeMobileMenu);
+      a.className = 'mobile-nav-link';
+      if (item.link.startsWith('#')) {
+        a.addEventListener('click', closeMobileMenu);
+      }
       mobileMenu.appendChild(a);
     });
 
@@ -200,8 +237,8 @@
 
     // Build slides
     carouselData.items.forEach((item) => {
-      const platform     = (item.platform || 'link').toLowerCase();
-      const linkClass    = ['instagram', 'facebook'].includes(platform) ? platform : '';
+      const platform = (item.platform || 'link').toLowerCase();
+      const linkClass = ['instagram', 'facebook'].includes(platform) ? platform : '';
       const platformIcon = getPlatformIcon(platform);
 
       const slide = document.createElement('div');
@@ -292,8 +329,8 @@
     if (socialEl && Array.isArray(footer.socials)) {
       footer.socials.forEach((s) => {
         const a = document.createElement('a');
-        a.href            = s.link;
-        a.className       = 'footer-social-link';
+        a.href = s.link;
+        a.className = 'footer-social-link';
         a.setAttribute('aria-label', s.platform);
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
@@ -345,9 +382,9 @@
         return r.json();
       })
       .then((data) => {
-        // Header / Navbar
+        // Header / Navbar (pass full header data for logos)
         if (data.header) {
-          initNavbar(data.header.menu || [], data.header.logoText || 'PetikLaut');
+          initNavbar(data.header);
         }
 
         // Hero

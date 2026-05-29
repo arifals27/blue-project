@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami | PetikLaut</title>
+  <meta name="description" content="Kenali tim peneliti dan pengembang di balik platform PetikLaut — pelestarian budaya bahari Nusantara.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+
+  <!-- Tailwind CDN (utility helpers) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+  ================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <!-- Logo Group -->
+      <div class="logo-area" id="logoArea">
+        <div class="partner-logos" id="partnerLogos">
+          <!-- Partner logos injected by JS -->
+        </div>
+        <div class="logo-divider"></div>
+        <a href="index.html" class="main-logo-link" id="mainLogoLink">
+          <img src="assets/images/logo/petiklaut.png" alt="PetikLaut" class="main-logo-img" id="mainLogoImg">
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <ul class="nav-links" id="desktopNav" role="navigation" aria-label="Menu Utama">
+        <!-- Populated by JS -->
+      </ul>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <!-- Populated by JS -->
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================
+         ABOUT HERO
+    ================================================ -->
+    <section class="about-hero" id="aboutHero">
+      <div class="about-hero-bg" aria-hidden="true">
+        <div class="about-hero-wave"></div>
+        <div class="about-hero-wave"></div>
+        <div class="about-hero-wave"></div>
+      </div>
+      <div class="about-hero-lines" aria-hidden="true"></div>
+
+      <!-- Ocean Bubbles -->
+      <div class="ocean-bubbles" aria-hidden="true">
+        <span class="bubble" style="--s:10px;--l:8%;--d:0s;--t:9s"></span>
+        <span class="bubble" style="--s:6px;--l:20%;--d:2s;--t:11s"></span>
+        <span class="bubble" style="--s:8px;--l:35%;--d:1s;--t:10s"></span>
+        <span class="bubble" style="--s:12px;--l:55%;--d:3s;--t:8s"></span>
+        <span class="bubble" style="--s:5px;--l:70%;--d:0.5s;--t:12s"></span>
+        <span class="bubble" style="--s:9px;--l:85%;--d:4s;--t:9s"></span>
+      </div>
+
+      <div class="about-hero-container reveal">
+        <div class="about-hero-badge">
+          <span class="about-hero-badge-dot"></span>
+          <span>Tentang Kami</span>
+        </div>
+        <h1 class="about-hero-title" id="aboutHeroTitle">
+          Tim <span class="highlight">PetikLaut</span>
+        </h1>
+        <p class="about-hero-desc" id="aboutHeroDesc">
+          <!-- Injected by JS -->
+        </p>
+      </div>
+
+      <!-- Wave transition -->
+      <div class="about-wave-transition" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,100 L0,100 Z" fill="#f0f8ff"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ================================================
+         MISSION & VISION
+    ================================================ -->
+    <section class="about-mv-section" id="aboutMission">
+      <div class="about-mv-inner">
+        <div class="about-mv-grid">
+          <div class="about-mv-card reveal" id="missionCard">
+            <div class="about-mv-icon">
+              <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="about-mv-title">Misi Kami</h2>
+            <p class="about-mv-text" id="missionText"><!-- Injected by JS --></p>
+          </div>
+          <div class="about-mv-card reveal reveal-delay-1" id="visionCard">
+            <div class="about-mv-icon">
+              <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="about-mv-title">Visi Kami</h2>
+            <p class="about-mv-text" id="visionText"><!-- Injected by JS --></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         VALUES
+    ================================================ -->
+    <section class="about-values-section" id="aboutValues">
+      <div class="about-values-inner">
+        <div class="section-header reveal">
+          <div class="section-eyebrow">
+            <span>💎</span> Nilai-Nilai Kami
+          </div>
+          <h2 class="section-title" style="color: var(--ocean-deep);">Prinsip yang Kami Pegang</h2>
+        </div>
+        <div class="about-values-grid" id="valuesGrid">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         TEAM
+    ================================================ -->
+    <section class="about-team-section" id="aboutTeam">
+      <div class="about-team-inner">
+        <div class="section-header reveal">
+          <div class="section-eyebrow" style="color: var(--ocean-light);">
+            <span>👥</span> Tim Kami
+          </div>
+          <h2 class="section-title" style="color: white;">Pengembang & Peneliti</h2>
+          <p class="section-desc" style="color: rgba(255,255,255,0.55);">
+            Berkenalan dengan orang-orang hebat di balik platform PetikLaut.
+          </p>
+        </div>
+        <div class="about-team-grid" id="teamGrid">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         CTA SECTION
+    ================================================ -->
+    <section class="about-cta-section">
+      <div class="about-cta-inner reveal">
+        <h2 class="about-cta-title">Bergabung Bersama Kami</h2>
+        <p class="about-cta-desc">Ingin berkontribusi dalam pelestarian budaya bahari Nusantara? Hubungi kami atau ikuti perjalanan kami di media sosial.</p>
+        <div class="about-cta-buttons">
+          <a href="https://www.instagram.com/petiklaut.id" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Ikuti di Instagram
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="index.html" class="btn-secondary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Kembali ke Beranda
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer id="footer">
+    <!-- Swimming fish in footer -->
+    <div class="ft-sea-fish" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="ft-seabed" aria-hidden="true">
+      <div class="ft-seaweed"><span></span><span></span><span></span></div>
+      <div class="ft-seaweed"><span></span><span></span><span></span></div>
+      <div class="ft-seaweed"><span></span><span></span><span></span></div>
+      <div class="ft-seaweed"><span></span><span></span><span></span></div>
+      <div class="ft-bubbles"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="ft-bubbles"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="ft-bubbles"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="ft-kelp"></div>
+      <div class="ft-kelp"></div>
+      <div class="ft-kelp"></div>
+    </div>
+
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <div class="footer-logo-icon" id="footerLogoIcon">PL</div>
+          <span class="footer-logo-text" id="footerLogoText">PetikLaut</span>
+        </div>
+        <p class="footer-desc" id="footerInfo">
+          <!-- Injected by JS -->
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <p class="footer-social-title">Ikuti Kami</p>
+        <div class="footer-social-links" id="socialLinks">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; <span id="year"></span> <span id="footerCopyright">PetikLaut</span>. Dibuat dengan ❤️ untuk budaya nusantara.
+      </p>
+      <p class="footer-copy" style="opacity:0.4;">Designed by the community, for the community.</p>
+    </div>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="about.js"></script>
+</body>
+</html>
